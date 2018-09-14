@@ -3,6 +3,9 @@ Do Kafka tutorial.
 
 # References
 
+## Kafka 2.0 Documentation
+https://kafka.apache.org/documentation/#gettingStarted
+
 ## cloudboxlabs git repo
 I forked from cloudboxlabs, added branch beepscore
 https://github.com/beepscore/blog-code.git
@@ -193,3 +196,40 @@ is_renting	1
 is_returning	1
 last_reported	1536882674
 eightd_has_available_keys	false
+
+# Appendix install kafka
+brew install kafka
+==> Installing dependencies for kafka: zookeeper
+==> Installing kafka dependency: zookeeper
+==> Downloading https://homebrew.bintray.com/bottles/zookeeper-3.4.12.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==> Pouring zookeeper-3.4.12.high_sierra.bottle.tar.gz
+==> Caveats
+To have launchd start zookeeper now and restart at login:
+  brew services start zookeeper
+Or, if you don't want/need a background service you can just run:
+  zkServer start
+==> Summary
+🍺  /usr/local/Cellar/zookeeper/3.4.12: 242 files, 32.9MB
+==> Installing kafka
+==> Downloading https://homebrew.bintray.com/bottles/kafka-2.0.0.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==> Pouring kafka-2.0.0.high_sierra.bottle.tar.gz
+==> Caveats
+To have launchd start kafka now and restart at login:
+  brew services start kafka
+Or, if you don't want/need a background service you can just run:
+  zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties
+==> Summary
+🍺  /usr/local/Cellar/kafka/2.0.0: 160 files, 46.8MB
+==> Caveats
+==> zookeeper
+To have launchd start zookeeper now and restart at login:
+  brew services start zookeeper
+Or, if you don't want/need a background service you can just run:
+  zkServer start
+==> kafka
+To have launchd start kafka now and restart at login:
+  brew services start kafka
+Or, if you don't want/need a background service you can just run:
+  zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties
