@@ -61,11 +61,86 @@ FileNotFoundError: [Errno 2] No such file or directory: '.mta_api_key'
 ##### mta key
 https://datamine.mta.info/user/register
 I requested a key. Had to provide email, street address, phone number.
+Keep api key secret, don't commit it to version control which could accidentally expose it.
+Added file .mta_api_key containing api key.
+.gitignore ignores filename .mta_api_key
 
-###### TODO: Get mta key
-Add file as .mta_api_key
-Don't put it in version control. .gitignore ignores filename .mta_api_key
+###### 2018-09-14
+producer.py produce_trip_updates is requesting to mta, getting response, parsing protobuf
+and converting to json.
 
+update_json = MessageToJson(entity.trip_update)
+e.g.
+{
+  "trip": {
+    "tripId": "075750_1..S03R",
+    "startDate": "20180914",
+    "routeId": "1"
+  },
+  "stopTimeUpdate": [
+    {
+      "arrival": {
+        "time": "1536946180"
+      },
+      "departure": {
+        "time": "1536946180"
+      },
+      "stopId": "134S"
+    },
+    {
+      "arrival": {
+        "time": "1536946270"
+      },
+      "departure": {
+        "time": "1536946270"
+      },
+      "stopId": "135S"
+    },
+    {
+      "arrival": {
+        "time": "1536946330"
+      },
+      "departure": {
+        "time": "1536946330"
+      },
+      "stopId": "136S"
+    },
+    {
+      "arrival": {
+        "time": "1536946420"
+      },
+      "departure": {
+        "time": "1536946420"
+      },
+      "stopId": "137S"
+    },
+    {
+      "arrival": {
+        "time": "1536946510"
+      },
+      "departure": {
+        "time": "1536946510"
+      },
+      "stopId": "138S"
+    },
+    {
+      "arrival": {
+        "time": "1536946600"
+      },
+      "departure": {
+        "time": "1536946600"
+      },
+      "stopId": "139S"
+    },
+    {
+      "arrival": {
+        "time": "1536946750"
+      },
+      "stopId": "142S"
+    }
+  ]
+}
+                
 #### consumer
 
     python consumer.py
