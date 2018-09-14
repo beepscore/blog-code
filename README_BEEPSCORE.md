@@ -54,9 +54,13 @@ Traceback (most recent call last):
     with open('.mta_api_key', 'r') as key_in:
 FileNotFoundError: [Errno 2] No such file or directory: '.mta_api_key'
 
-### TODO: Get mta key and install file. Don't put it in version control.
+### mta key
 https://datamine.mta.info/user/register
 I requested a key. Had to provide email, street address, phone number.
+
+#### TODO: Get mta key
+Add file as .mta_api_key
+Don't put it in version control. .gitignore ignores filename .mta_api_key
 
 
 # Appendix bike sample data
