@@ -48,7 +48,7 @@ Try running locally instead.
     python producer.py
 ModuleNotFoundError: No module named 'confluent_kafka'
 
-In anaconda installed package python-confluent-kafka (I think this contains module confluent_kafka)
+In anaconda installed package python-confluent-kafka 0.11.4 (I think this contains module confluent_kafka)
 
     python producer.py
 Traceback (most recent call last):
