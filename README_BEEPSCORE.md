@@ -35,6 +35,11 @@ Apparently author already generated pyton protobuf classes like nyct_subway_pb2.
 
     python -m grpc_tools.protoc -Iprotos/ --python_out=. --grpc_python_out=. protos/gtfs-realtime.proto
 
+### Kafka
+In tutorial, both the Kafka cluster and the application components run on separate EC2 on AWS.
+Try running locally instead.
+
+
 # Appendix bike sample data
 https://gbfs.fordgobike.com/gbfs/en/station_status.json
 returns json with ~ 300 stations
