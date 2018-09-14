@@ -29,8 +29,10 @@ https://streamsets.com/
 # Results
 
 ## Building a real time NYC subway tracker with Apache Kafka
+"MTA’s trip update API uses protobuf in gtfs-realtime feed specification."
 
 ### python protobuf classes
+These are used to parse mta API protobuf response.
 Apparently author already generated pyton protobuf classes like nyct_subway_pb2.py by running:
 
     python -m grpc_tools.protoc -Iprotos/ --python_out=. --grpc_python_out=. protos/gtfs-realtime.proto
@@ -40,6 +42,8 @@ In tutorial, both the Kafka cluster and the application components run on separa
 Try running locally instead.
 
     conda activate beepscore
+
+#### producer
 
     python producer.py
 ModuleNotFoundError: No module named 'confluent_kafka'
@@ -54,14 +58,30 @@ Traceback (most recent call last):
     with open('.mta_api_key', 'r') as key_in:
 FileNotFoundError: [Errno 2] No such file or directory: '.mta_api_key'
 
-### mta key
+##### mta key
 https://datamine.mta.info/user/register
 I requested a key. Had to provide email, street address, phone number.
 
-#### TODO: Get mta key
+###### TODO: Get mta key
 Add file as .mta_api_key
 Don't put it in version control. .gitignore ignores filename .mta_api_key
 
+#### consumer
+
+    python consumer.py
+  File "consumer.py", line 5, in <module>
+    import arrow
+ModuleNotFoundError: No module named 'arrow'
+
+In anaconda installed package arrow, not pyarrow.
+https://arrow.readthedocs.io/en/latest/
+
+    python consumer.py
+%3|1536891241.394|FAIL|rdkafka#consumer-1| [thrd:localhost:9092/bootstrap]: localhost:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused
+%3|1536891241.394|ERROR|rdkafka#consumer-1| [thrd:localhost:9092/bootstrap]: localhost:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused
+%3|1536891241.394|ERROR|rdkafka#consumer-1| [thrd:localhost:9092/bootstrap]: 1/1 brokers are down
+
+TODO: get key and start producer before starting consumer.
 
 # Appendix bike sample data
 https://gbfs.fordgobike.com/gbfs/en/station_status.json
