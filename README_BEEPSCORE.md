@@ -39,6 +39,23 @@ Apparently author already generated pyton protobuf classes like nyct_subway_pb2.
 In tutorial, both the Kafka cluster and the application components run on separate EC2 on AWS.
 Try running locally instead.
 
+    conda activate beepscore
+
+    python producer.py
+ModuleNotFoundError: No module named 'confluent_kafka'
+
+In anaconda installed package python-confluent-kafka (I think this contains module confluent_kafka)
+
+    python producer.py
+Traceback (most recent call last):
+  File "producer.py", line 41, in <module>
+    MTARealTime().run()
+  File "producer.py", line 13, in __init__
+    with open('.mta_api_key', 'r') as key_in:
+FileNotFoundError: [Errno 2] No such file or directory: '.mta_api_key'
+
+TODO: Register with mta and install file. Don't put it in version control.
+
 
 # Appendix bike sample data
 https://gbfs.fordgobike.com/gbfs/en/station_status.json
