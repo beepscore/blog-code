@@ -54,7 +54,9 @@ Traceback (most recent call last):
     with open('.mta_api_key', 'r') as key_in:
 FileNotFoundError: [Errno 2] No such file or directory: '.mta_api_key'
 
-TODO: Register with mta and install file. Don't put it in version control.
+### TODO: Get mta key and install file. Don't put it in version control.
+https://datamine.mta.info/user/register
+I requested a key. Had to provide email, street address, phone number.
 
 
 # Appendix bike sample data
