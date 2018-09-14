@@ -29,6 +29,8 @@ https://streamsets.com/
 # Results
 
 ## Building a real time NYC subway tracker with Apache Kafka
+
+### python protobuf classes
 Apparently author already generated pyton protobuf classes like nyct_subway_pb2.py by running:
 
     python -m grpc_tools.protoc -Iprotos/ --python_out=. --grpc_python_out=. protos/gtfs-realtime.proto
