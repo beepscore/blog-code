@@ -55,6 +55,12 @@ Try running locally instead.
  
      zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
  
+#### zookeeper log files
+log files at /usr/local/var/lib/zookeeper/version-2/log.1
+log directory size is ~67 Mb.
+
+similar directory /user/local/var/log/zookeeper is empty. Did the python file change location?
+ 
 ### start kafka server
 
  open a second terminal window, run:
@@ -65,9 +71,16 @@ Try running locally instead.
  producer and consumer connect to kafka on port 9092.
  https://stackoverflow.com/questions/51338769/kafka-node-only-works-on-zookeeper-port-2181
  
-### in pycharm run producer.py
+#### kafka log files
+log files at /usr/local/var/lib/kafka-logs also subdirectory test-0
+log directory size is 1.08 Gb.
+
+similar directory /user/local/var/log/kafka is empty. Did the python file change log location?
  
- iterm kafka server partial log:
+### in pycharm run producer.py
+
+iterm kafka server partial log:
+
 [2018-09-14 16:11:27,402] INFO [Log partition=test-0, dir=/usr/local/var/lib/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
 [2018-09-14 16:11:27,408] INFO [Log partition=test-0, dir=/usr/local/var/lib/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 35 ms (kafka.log.Log)
 [2018-09-14 16:11:27,409] INFO Created log for partition test-0 in /usr/local/var/lib/kafka-logs with properties {compression.type -> producer, message.format.version -> 2.0-IV1, file.delete.delay.ms -> 60000, max.message.bytes -> 1000012, min.compaction.lag.ms -> 0, message.timestamp.type -> CreateTime, message.downconversion.enable -> true, min.insync.replicas -> 1, segment.jitter.ms -> 0, preallocate -> false, min.cleanable.dirty.ratio -> 0.5, index.interval.bytes -> 4096, unclean.leader.election.enable -> false, retention.bytes -> -1, delete.retention.ms -> 86400000, cleanup.policy -> [delete], flush.ms -> 9223372036854775807, segment.ms -> 604800000, segment.bytes -> 1073741824, retention.ms -> 604800000, message.timestamp.difference.max.ms -> 9223372036854775807, segment.index.bytes -> 10485760, flush.messages -> 9223372036854775807}. (kafka.log.LogManager)
@@ -92,6 +105,7 @@ Next S bound 1 train will arrive at station Cortlandt St in 2 minutes
 Next S bound 6 train will arrive at station Brook Av in 3 minutes
 Next S bound 6 train will arrive at station 3 Av - 138 St in 4 minutes
 Next N bound 6 train will arrive at station 23 St in 1 minutes
+
 Traceback (most recent call last):
   File "/Users/stevebaker/Documents/projects/kafkaProjects/cloudboxlabs/blog-code/streaming/consumer.py", line 78, in <module>
     MTATrainTracker().run()
@@ -289,6 +303,32 @@ Or, if you don't want/need a background service you can just run:
  /usr/local/etc/zookeeper/zoo.cfg
  I didn't edit it.
  
+# Appendix stop kafka server
+in terminal ctrl-C
+
+...
+2018-09-14 16:55:44,278] INFO [ReplicaManager broker=0] Shut down completely (kafka.server.ReplicaManager)
+[2018-09-14 16:55:44,279] INFO Shutting down. (kafka.log.LogManager)
+[2018-09-14 16:55:44,304] INFO [ProducerStateManager partition=test-0] Writing producer snapshot at offset 21147 (kafka.log.ProducerStateManager)
+[2018-09-14 16:55:44,309] INFO [ProducerStateManager partition=__consumer_offsets-37] Writing producer snapshot at offset 3 (kafka.log.ProducerStateManager)
+[2018-09-14 16:55:44,331] INFO Shutdown complete. (kafka.log.LogManager)
+[2018-09-14 16:55:44,338] INFO [ZooKeeperClient] Closing. (kafka.zookeeper.ZooKeeperClient)
+[2018-09-14 16:55:44,340] INFO Session: 0x100016f2abe0000 closed (org.apache.zookeeper.ZooKeeper)
+[2018-09-14 16:55:44,341] INFO EventThread shut down for session: 0x100016f2abe0000 (org.apache.zookeeper.ClientCnxn)
+[2018-09-14 16:55:44,341] INFO [ZooKeeperClient] Closed. (kafka.zookeeper.ZooKeeperClient)
+[2018-09-14 16:55:44,342] INFO [ThrottledChannelReaper-Fetch]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2018-09-14 16:55:44,704] INFO [ThrottledChannelReaper-Fetch]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2018-09-14 16:55:44,704] INFO [ThrottledChannelReaper-Fetch]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2018-09-14 16:55:44,704] INFO [ThrottledChannelReaper-Produce]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2018-09-14 16:55:45,708] INFO [ThrottledChannelReaper-Produce]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2018-09-14 16:55:45,708] INFO [ThrottledChannelReaper-Produce]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2018-09-14 16:55:45,709] INFO [ThrottledChannelReaper-Request]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2018-09-14 16:55:46,709] INFO [ThrottledChannelReaper-Request]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2018-09-14 16:55:46,709] INFO [ThrottledChannelReaper-Request]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2018-09-14 16:55:46,711] INFO [SocketServer brokerId=0] Shutting down socket server (kafka.network.SocketServer)
+[2018-09-14 16:55:46,723] INFO [SocketServer brokerId=0] Shutdown completed (kafka.network.SocketServer)
+[2018-09-14 16:55:46,726] INFO [KafkaServer id=0] shut down completed (kafka.server.KafkaServer)
+
 # Appendix bike sample data
 Different tutorial than subway data
 https://gbfs.fordgobike.com/gbfs/en/station_status.json
