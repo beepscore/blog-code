@@ -60,23 +60,23 @@ log files at /usr/local/var/lib/zookeeper/version-2/log.1
 log directory size is ~67 Mb.
 
 similar directory /user/local/var/log/zookeeper is empty. Did the python file change location?
- 
+
 ### start kafka server
 
  open a second terminal window, run:
- 
+
      kafka-server-start /usr/local/etc/kafka/server.properties
-  
+
  I think kafka connects to zookeeper on port 2181.
  producer and consumer connect to kafka on port 9092.
  https://stackoverflow.com/questions/51338769/kafka-node-only-works-on-zookeeper-port-2181
- 
+
 #### kafka log files
 log files at /usr/local/var/lib/kafka-logs also subdirectory test-0
 log directory size is 1.08 Gb.
 
 similar directory /user/local/var/log/kafka is empty. Did the python file change log location?
- 
+
 ### in pycharm run producer.py
 
 iterm kafka server partial log:
